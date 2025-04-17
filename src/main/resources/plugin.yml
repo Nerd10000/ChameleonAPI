@@ -1,0 +1,4 @@
+name: ChameleonAPI
+version: '1.0-SNAPSHOT'
+main: dragon.me.chameleonAPI.ChameleonAPI
+api-version: '1.21'
