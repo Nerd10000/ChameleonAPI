@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChameleonAPI.iml" filepath="$PROJECT_DIR$/.idea/modules/ChameleonAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChameleonAPI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChameleonAPI.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChameleonAPI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChameleonAPI.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dragon.me.ChameleonAPI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dragon.me.ChameleonAPI.main.iml" />
     </modules>
   </component>
 </project>
