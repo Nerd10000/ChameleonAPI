@@ -52,6 +52,11 @@ dependencies {
 
     // Lombok for Annotations
     compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    //other
     implementation 'com.carrotsearch:java-sizeof:0.0.5'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
 }
