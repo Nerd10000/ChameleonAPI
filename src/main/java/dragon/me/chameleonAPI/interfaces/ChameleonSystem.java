@@ -4,6 +4,7 @@ public interface ChameleonSystem {
 
     //void tickTimer();
 
+
     float getTPS();
 
     float getMSPT();
@@ -14,5 +15,4 @@ public interface ChameleonSystem {
 
     int getCore();
 
-    String getStartupFlags();
 }

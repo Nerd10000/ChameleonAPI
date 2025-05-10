@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.retrooper:packetevents-netty-common:2.7.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.github.retrooper" artifactId="packetevents-netty-common" version="2.7.0" baseVersion="2.7.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.retrooper/packetevents-netty-common/2.7.0/41cf3fd7c314dec96c3b374e2259d5a49f81762b/packetevents-netty-common-2.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

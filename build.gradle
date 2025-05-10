@@ -23,12 +23,37 @@ repositories {
     }
     maven { url 'https://jitpack.io' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
 
+    maven { url = uri("https://repo.codemc.io/repository/maven-snapshots/") }
 }
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
-    implementation 'com.github.Nerd10000:ChameleonAPI:1.0.0-SNAPSHOT'
+    //implementation 'com.github.Nerd10000:ChameleonAPI:TAG'
+    implementation platform('org.apache.logging.log4j:log4j-bom:2.24.3')
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    implementation("org.apache.logging.log4j:log4j-api:3.0.0-beta2")
+    // https://mvnrepository.com/artifact/cglib/cglib
+    implementation("cglib:cglib:3.3.0")
+    // Adventure Core
+    implementation "net.kyori:adventure-api:4.20.0"
+    //Adventure Bukkit stuff
+    implementation "net.kyori:adventure-platform-bukkit:4.3.4"
+    // Adventure JSON Serializer
+    implementation "net.kyori:adventure-text-serializer-gson:4.20.0"
+    compileOnly 'me.lucko:spark-api:0.1-SNAPSHOT'
+    //Adventure MiniMessage support
+    implementation "net.kyori:adventure-text-minimessage:4.20.0"
+
+    //
+    compileOnly("com.github.retrooper:packetevents-spigot:2.7.0")
+
+    // Lombok for Annotations
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    implementation 'com.carrotsearch:java-sizeof:0.0.5'
+    implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
 }
 
 tasks {
