@@ -5,3 +5,5 @@
 
 <img src="logo3.png" width="200" height="200">
 This is AI generated image, sorry I can't draw.</small>
+<p align="left">ChameleonAPI was designed to make common apis easier to use and extended their capabillities.</p>
+---
