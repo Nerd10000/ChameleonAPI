@@ -1,84 +1,74 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id("com.gradleup.shadow") version "8.3.0"
+    id 'com.github.johnrengelman.shadow' version '8.1.1' // Correct plugin ID
 }
 
-group = 'dragon.me'
-version = '1.1.5'
+group = 'com.github.Nerd10000'
+version = '1.1.9'
 
 java {
     withJavadocJar()
     withSourcesJar()
-    def javaVersion = JavaVersion.toVersion(21)
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(21)
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(23) // Ensures usage of Java 23 toolchain
     }
-
 }
 
 repositories {
-
-    maven { name = "spigotmc-repo"; url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
-    maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
-
-
-    maven { url = uri("https://repo.codemc.io/repository/maven-snapshots/") }
-    maven { name = "sonatype"; url = "https://oss.sonatype.org/content/groups/public/" }
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
-    maven { url = uri("https://repo.codemc.io/repository/maven-snapshots/") }
-    maven { url 'https://jitpack.io' }
-
     mavenCentral()
+    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://repo.codemc.io/repository/maven-releases/' }
+    maven { url = 'https://repo.codemc.io/repository/maven-snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/releases/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url = 'https://repo.lucko.me/' }
 }
 
-
 dependencies {
-    implementation("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
+
     implementation platform('org.apache.logging.log4j:log4j-bom:2.24.3')
     implementation("org.apache.logging.log4j:log4j-api:3.0.0-beta2")
+
     implementation("cglib:cglib:3.3.0")
+
     implementation "net.kyori:adventure-api:4.20.0"
     implementation "net.kyori:adventure-platform-bukkit:4.3.4"
     implementation "net.kyori:adventure-text-serializer-gson:4.20.0"
     implementation "net.kyori:adventure-text-minimessage:4.20.0"
-    implementation 'me.lucko:spark-api:0.1-SNAPSHOT'
-    implementation("com.github.retrooper:packetevents-spigot:2.7.0")
-    implementation 'org.projectlombok:lombok:1.18.38'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
-    testCompileOnly 'org.projectlombok:lombok:1.18.30'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    compileOnly 'me.lucko:spark-api:0.1-SNAPSHOT'
+    compileOnly("com.github.retrooper:packetevents-spigot:2.7.0")
+
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+
     implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    if (JavaVersion.current().isJava10Compatible()) {
-        options.release.set(21)
-    }
+    options.release.set(17)  // Ensuring that the Java version is set to 23 for Java compile tasks
 }
-tasks {
-    shadowJar {
-        archiveClassifier.set("") // override default JAR
-        relocate("com.github.benmanes.caffeine", "dragon.me.chameleonAPI.shaded.caffeine")
-        relocate("org.projectlombok:lombok","dragon.me.chameleonAPI.shaded.lombok")
-        relocate("com.github.retrooper:packetevents-spigot","dragon.me.chameleonAPI.shaded.packetevents-spigot")
-        relocate("net.kyori:adventure-api","dragon.me.chameleonAPI.shaded.adventure-api")
-        relocate("net.kyori:adventure-platform-bukkit","dragon.me.chameleonAPI.shaded.adventure-bukkit")
-        relocate("net.kyori:adventure-text-serializer-gson","dragon.me.chameleonAPI.shaded.adventure-gson")
-        relocate("net.kyori:adventure-text-minimessage","dragon.me.chameleonAPI.shaded.adventure-minimessage")
-    }
-    build {
-        dependsOn(shadowJar);
-    }
+
+tasks.named('shadowJar') {
+    archiveClassifier.set("") // override default classifier
+
+    relocate("com.github.benmanes.caffeine", "dragon.me.chameleonAPI.shaded.caffeine")
+    relocate("net.kyori.adventure", "dragon.me.chameleonAPI.shaded.adventure")
+    relocate("com.github.retrooper.packetevents", "dragon.me.chameleonAPI.shaded.packetevents")
 }
+
+tasks.build {
+    dependsOn tasks.shadowJar
+}
+
 processResources {
     def props = [version: version]
     inputs.properties props
-    filteringCharset 'UTF-8'
+    filteringCharset = 'UTF-8'
     filesMatching('plugin.yml') {
         expand props
     }
@@ -89,9 +79,8 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
 
-            groupId = 'com.github.Nerd10000'
             artifactId = 'ChameleonAPI'
-            version = '1.0.0' // Use a proper release version
+            version = project.version
 
             pom {
                 name = 'ChameleonAPI'
@@ -121,6 +110,7 @@ publishing {
             }
         }
     }
+
     repositories {
         maven {
             name = "GitHubPackages"
