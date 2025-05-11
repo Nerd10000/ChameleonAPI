@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id("com.gradleup.shadow") version "8.3.0"
 }
 
 group = 'dragon.me'
@@ -25,14 +26,7 @@ repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
     maven { url = uri("https://repo.codemc.io/repository/maven-snapshots/") }
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/Nerd10000/ChameleonAPI")
-        credentials {
-            username = project.findProperty("USERNAME") ?: System.getenv("USERNAME")
-            password = project.findProperty("TOKEN") ?: System.getenv("TOKEN")
-        }
-    }
+    maven { url 'https://jitpack.io' }
 }
 
 
