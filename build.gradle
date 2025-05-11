@@ -15,6 +15,7 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(21)
     }
+
 }
 
 repositories {
@@ -73,11 +74,38 @@ processResources {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId = "com.github.Nerd10000" // <-- Must match your GitHub username
-            artifactId = "ChameleonAPI"
-            version = "1.0-SNAPSHOT"
-
             from components.java
+
+            groupId = 'com.github.Nerd10000'
+            artifactId = 'ChameleonAPI'
+            version = '1.0.0' // Use a proper release version
+
+            pom {
+                name = 'ChameleonAPI'
+                description = 'A modular API for Minecraft plugins.'
+                url = 'https://github.com/Nerd10000/ChameleonAPI'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'Nerd10000'
+                        name = 'Nerd10000'
+                        email = 'your@email.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/Nerd10000/ChameleonAPI.git'
+                    developerConnection = 'scm:git:ssh://github.com:Nerd10000/ChameleonAPI.git'
+                    url = 'https://github.com/Nerd10000/ChameleonAPI'
+                }
+            }
         }
     }
     repositories {
