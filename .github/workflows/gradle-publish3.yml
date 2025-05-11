@@ -6,13 +6,12 @@
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
 
 name: Automatic Package Publishing
-
 on:
+  release:
+    types: [published] # Change from "created" to "published" — more reliable
   push:
     tags:
-      - 'v*'  # Runs when you push tags like v1.0, v2.1.5, etc.
-  release:
-    types: [created]
+      - 'v*'
 jobs:
   build:
 
