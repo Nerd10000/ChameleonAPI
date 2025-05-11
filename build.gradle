@@ -5,13 +5,13 @@ plugins {
 }
 
 group = 'com.github.Nerd10000'
-version = '1.1.8'
+version = '1.1.9'
 
 java {
     withJavadocJar()
     withSourcesJar()
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(23) // Ensures usage of Java 23 toolchain
     }
 }
 
@@ -50,9 +50,7 @@ dependencies {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    if (JavaVersion.current().isJava10Compatible()) {
-        options.release.set(21)
-    }
+    options.release.set(17)  // Ensuring that the Java version is set to 23 for Java compile tasks
 }
 
 tasks.named('shadowJar') {
