@@ -1,6 +1,6 @@
 package dragon.me.chameleonAPI.math.mojang;
 
-import com.carrotsearch.sizeof.RamUsageEstimator;
+
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
