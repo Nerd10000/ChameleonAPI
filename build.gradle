@@ -11,7 +11,7 @@ java {
     withJavadocJar()
     withSourcesJar()
     toolchain {
-        languageVersion = JavaLanguageVersion.of(23) // Ensures usage of Java 23 toolchain
+        languageVersion = JavaLanguageVersion.of(21) // Ensures usage of Java 23 toolchain
     }
 }
 
@@ -29,7 +29,7 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
 
-    implementation platform('org.apache.logging.log4j:log4j-bom:2.24.3')
+    implementation("org.apache.logging.log4j:log4j-api:2.24.3")
     implementation("org.apache.logging.log4j:log4j-api:3.0.0-beta2")
 
     implementation("cglib:cglib:3.3.0")

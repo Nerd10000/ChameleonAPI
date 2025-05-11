@@ -14,7 +14,7 @@
     <output-test url="file://$MODULE_DIR$/../../build/classes/java/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/test" />
-    <orderEntry type="jdk" jdkName="23" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="21" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="com.github.Nerd10000.ChameleonAPI.main" />
     <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-api:3.0.0-beta2" level="project" />
