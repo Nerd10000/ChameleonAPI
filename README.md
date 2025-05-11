@@ -3,5 +3,5 @@
 
 
 
-<img src="logo2.png" width="200" height="200">
+<img src="logo3.png" width="200" height="200">
 This is AI generated image, sorry I can't draw.</small>
