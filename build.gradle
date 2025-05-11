@@ -21,12 +21,20 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
-    maven { url 'https://jitpack.io' }
+
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
 
     maven { url = uri("https://repo.codemc.io/repository/maven-snapshots/") }
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/OWNER/REPO")
+        credentials {
+            username = project.findProperty("USERNAME") ?: System.getenv("USERNAME")
+            password = project.findProperty("TOKEN") ?: System.getenv("TOKEN")
+        }
+    }
 }
 
 dependencies {
@@ -83,6 +91,15 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+
 
 processResources {
     def props = [version: version]
@@ -91,4 +108,5 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+
 }
