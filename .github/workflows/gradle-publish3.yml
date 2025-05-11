@@ -8,9 +8,11 @@
 name: Automatic Package Publishing
 
 on:
+  push:
+    tags:
+      - 'v*'  # Runs when you push tags like v1.0, v2.1.5, etc.
   release:
     types: [created]
-
 jobs:
   build:
 
