@@ -10,9 +10,6 @@
         <module name="com.github.Nerd10000.ChameleonAPI.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="21">
-      <module name="ChameleonAPI.test" target="17" />
-      <module name="com.github.Nerd10000.ChameleonAPI.main" target="17" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="21" />
   </component>
 </project>
