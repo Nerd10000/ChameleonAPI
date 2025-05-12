@@ -71,7 +71,7 @@ tasks.named('shadowJar') {
     relocate("net.kyori.adventure", "dragon.me.chameleonAPI.shaded.adventure")
 
     // Make sure PacketEvents is also relocated and included in the shaded jar
-    relocate("com.github.retrooper.packetevents", "dragon.me.chameleonAPI.shaded.packetevents")
+    relocate("com.github.retrooper.packetevents-spigot", "dragon.me.chameleonAPI.shaded.packetevents")
 
 }
 
