@@ -19,16 +19,17 @@ repositories {
     mavenCentral()
     maven { url = 'https://repo.codemc.io/repository/maven-releases/' }
     maven { url = 'https://repo.codemc.io/repository/maven-snapshots/' }
-    maven { url = 'https://jitpack.io' }
+
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
 
     maven { url = 'https://oss.sonatype.org/content/repositories/releases/' }
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
     maven { url = 'https://repo.lucko.me/' }
+    maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
+
 
     // Logging dependencies
     implementation("org.apache.logging.log4j:log4j-api:2.24.3")
@@ -48,7 +49,7 @@ dependencies {
 
     // Include PacketEvents as implementation to ensure it's bundled in the JAR
     implementation("com.github.retrooper:packetevents-spigot:2.7.0")
-
+    compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
     // Lombok for annotations
     compileOnly 'org.projectlombok:lombok:1.18.38'
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
