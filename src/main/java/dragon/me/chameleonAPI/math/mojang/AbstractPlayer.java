@@ -5,8 +5,6 @@ import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
-import com.github.retrooper.packetevents.wrapper.PacketWrapper;
-import dragon.me.chameleonAPI.annotations.Abstract;
 import dragon.me.chameleonAPI.annotations.AntiCheatStuff;
 import dragon.me.chameleonAPI.annotations.Async;
 import dragon.me.chameleonAPI.implementations.AsyncImplementation;
@@ -19,14 +17,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @AntiCheatStuff //Kinda
-@Abstract //Extendable
+//Extendable
 @Getter @Setter
 public class AbstractPlayer {
 
